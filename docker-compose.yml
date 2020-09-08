@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  database:
+    image: postgres:12-alpine
+    ports:
+      - "127.0.0.1:55000:5432"
+    volumes:
+      - ./src/initdb/:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=sample
+    restart: always
